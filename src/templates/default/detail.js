@@ -40,6 +40,19 @@ class Template extends React.Component {
     showMenu: false,
   }
 
+  constructor(props) {
+    super(props)
+    this.fetch()
+  }
+
+  fetch = async () => {
+    const { event, notification } = this.props.store
+    const response = await event.fetchAll()
+    if (!response.ok) {
+      notification.show(response.message)
+    }
+  }
+
   handleLogout = async () => {
     const { auth  } = this.props.store
     const response = await auth.logout()
