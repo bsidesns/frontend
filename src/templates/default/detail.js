@@ -213,6 +213,9 @@ class Template extends React.Component {
           </Link>
         ),
       ] : null
+    const title = resolution.detail.width > 510
+      ? 'BSides Novi Sad'
+      : 'BSidesNS'
     return (
       <div>
         <AppBar position="static">
@@ -222,7 +225,7 @@ class Template extends React.Component {
                 <MenuIcon />
               </IconButton>
               <Link to="/" data-id="app">
-                BSides Novi Sad
+                {title}
               </Link>
             </Typography>
             {BarLinks}
