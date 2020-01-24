@@ -16,10 +16,12 @@ export default function getStyles(theme, height) {
       fontSize: '25px',
       marginTop: 10,
       color: 'rgb(80, 80, 80)',
+      textAlign: 'center',
     },
 
     link: {
       color: 'white',
+      textAlign: 'center',
     },
 
     tickets: {
@@ -32,6 +34,7 @@ export default function getStyles(theme, height) {
       backgroundColor: theme.palette.primary.main,
       color: 'white',
       fontSize: 36,
+      textAlign: 'center',
       link: {
         marginTop: 50,
         textDecoration: 'none',
