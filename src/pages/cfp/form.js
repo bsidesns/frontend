@@ -132,15 +132,15 @@ class CfP extends React.Component {
           <h1>Call for Papers</h1>
           <div style={styles.subtitle}>Open until 5th of May 2019</div>
           {form}
-          <div style={styles.signButton}>
-            <mui.Button>
+          <div style={styles.register}>
+            <Button type="submit" color="primary" variant="contained">
               REGISTER
-            </mui.Button>
+            </Button>
           </div>
-          <div>
-            <mui.Button>
+          <div style={styles.login}>
+            <Button type="submit" color="primary" variant="contained">
               LOGIN
-            </mui.Button>
+            </Button>
           </div>
         </Paper>
       </Template>
