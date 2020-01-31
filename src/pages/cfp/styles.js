@@ -37,4 +37,8 @@ export default {
   subtitle: {
     marginBottom: 20,
   },
+
+  signButton: {
+    marginBottom: 20,
+  },
 }
