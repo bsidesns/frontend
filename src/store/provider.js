@@ -5,6 +5,9 @@ import {
   Auth,
   EmptyTemplate,
   Store,
+  Resolution,
+  Role,
+  User
 } from 'freenit'
 import CfP from 'pages/cfp'
 import CfS from 'pages/cfs'
@@ -12,10 +15,7 @@ import Event from 'pages/event'
 import Gallery from 'pages/gallery'
 import Landing from 'pages/landing'
 import Me from 'pages/me'
-import Resolution from 'pages/resolution'
-import Role from 'pages/role'
 import Talk from 'pages/talk'
-import User from 'pages/user'
 import { withRouter } from 'react-router-dom'
 
 

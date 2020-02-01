@@ -32,13 +32,6 @@ class LandingInfo extends Component {
             Call for Papers
           </Paper>
         </Link>
-        <a
-          href="https://www.youtube.com/watch?v=sTQaCm_ax8Q&list=PLnRmeeuhue8fc0XAhmOIIxe3-5ZVmses6"
-          style={styles.tickets.link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
       </div>
     )
   }
