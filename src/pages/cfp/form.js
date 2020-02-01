@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Link }from 'react-router-dom'
 import { withStore } from 'freenit'
 import { errors } from 'utils'
-import * as mui from '@material-ui/core'
 
 // Components
 import {
@@ -125,6 +124,18 @@ class CfP extends React.Component {
       ) : (
         <div>
           Please, register or login first!
+          <div style={styles.auth}>
+            <Link to="/login" style={styles.auth.button}>
+              <Button color="primary" variant="outlined">
+                LOGIN
+              </Button>
+            </Link>
+            <Link to="/register" style={styles.auth.button}>
+              <Button color="primary" variant="contained">
+                REGISTER
+              </Button>
+            </Link>
+          </div>
         </div>
       )
     return (
@@ -133,20 +144,6 @@ class CfP extends React.Component {
           <h1>Call for Papers</h1>
           <div style={styles.subtitle}>Open until 5th of May 2019</div>
           {form}
-          <div style={styles.register}>
-            <Link to="/cfs" >
-            <mui.Button type="submit" color="primary" variant="contained">
-              REGISTER
-            </mui.Button>
-          </Link>
-          </div>
-          <Link to="/login" >
-          <div style={styles.login}>
-            <mui.Button type="submit" color="primary" variant="contained">
-              LOGIN
-            </mui.Button>
-          </div>
-          </Link>
         </Paper>
       </Template>
     )

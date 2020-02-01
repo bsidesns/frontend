@@ -1,14 +1,18 @@
 export default {
   root: {
-    display: 'block',
+    display: 'flex',
     minHeight: 'calc(100vh - 65px - 40px)',
     padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
   },
 
   form: {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
+    width: '100%',
   },
 
   talk: {
@@ -51,5 +55,13 @@ export default {
     marginBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  auth: {
+    marginTop: 20,
+    button: {
+      marginLeft: 5,
+      marginRight: 5,
+    },
   },
 }
