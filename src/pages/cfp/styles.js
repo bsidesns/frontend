@@ -37,4 +37,19 @@ export default {
   subtitle: {
     marginBottom: 20,
   },
+
+  register: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+  },
+
+  login: {
+    display: 'flex',
+    marginBottom: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 }
