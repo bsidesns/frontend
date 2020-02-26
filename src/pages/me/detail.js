@@ -15,8 +15,13 @@ import styles from './styles'
 
 class Me extends React.Component {
   state = {
+    biogaphy: '',
     edited: false,
     email: '',
+    facebook: '',
+    firstName: '',
+    lastName: '',
+    twitter: '',
   }
 
   constructor(props) {
@@ -26,7 +31,12 @@ class Me extends React.Component {
 
   initState = (data = this.props.store.me.detail) => {
     this.setState({
-      email: data.email,
+      biography: data.biography || '',
+      email: data.email || '',
+      facebook: data.facebook || '',
+      firstName: data.firstName || '',
+      lastName: data.lastName || '',
+      twitter: data.twitter || '',
     })
   }
 
@@ -53,12 +63,14 @@ class Me extends React.Component {
     this.initState()
   }
 
-  handleSubmit = async (event) => {
+  handleSubmit = (field) => async (event) => {
     const { me, notification } = this.props.store
     event.preventDefault()
-    const response = await me.edit({ email: this.state.email })
+    const response = await me.edit({ [field]: this.state[field] })
     if (!response.ok) {
       notification.show('Error editing me')
+    } else {
+      this.setState({ edited: false })
     }
   }
 
@@ -75,48 +87,170 @@ class Me extends React.Component {
                 value={this.state.email}
                 onChange={this.handleField('email')}
               />
-              <TextField label="first name" fullWidth />
-              <div style={styles.actions}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  style={styles.actions.button}
-                  disabled={!this.state.edited}
-                >
-                  OK
-                </Button>
-                <Button
-                  color="secondary"
-                  variant="contained"
-                  style={styles.actions.button}
-                  disabled={!this.state.edited}
-                  onClick={this.handleFieldCancel}
-                >
-                  Cancel
-                </Button>
-              </div>
-              <TextField label="last name" fullWidth />
-              <TextField label="biography" fullWidth multiline />
+              {this.state.edited === 'email'
+                ? (
+                  <div style={styles.actions}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      style={styles.actions.button}
+                      onClick={this.handleSubmit('email')}
+                    >
+                      OK
+                    </Button>
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      style={styles.actions.button}
+                      onClick={this.handleFieldCancel}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                ) : null
+              }
+              <TextField
+                fullWidth
+                label="first name"
+                value={this.state.firstName}
+                onChange={this.handleField('firstName')}
+              />
+              {this.state.edited === 'firstName'
+                ? (
+                  <div style={styles.actions}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      style={styles.actions.button}
+                      onClick={this.handleSubmit('firstName')}
+                    >
+                      OK
+                    </Button>
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      style={styles.actions.button}
+                      onClick={this.handleFieldCancel}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                ) : null
+              }
+              <TextField
+                fullWidth
+                label="last name"
+                value={this.state.last}
+                onChange={this.handleField('lastName')}
+              />
+              {this.state.edited === 'lastName'
+                ? (
+                  <div style={styles.actions}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      style={styles.actions.button}
+                      onClick={this.handleSubmit('lastName')}
+                    >
+                      OK
+                    </Button>
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      style={styles.actions.button}
+                      onClick={this.handleFieldCancel}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                ) : null
+              }
+              <TextField
+                fullWidth
+                label="facebook"
+                value={this.state.facebook}
+                onChange={this.handleField('facebook')}
+              />
+              {this.state.edited === 'facebook'
+                ? (
+                  <div style={styles.actions}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      style={styles.actions.button}
+                      onClick={this.handleSubmit('facebook')}
+                    >
+                      OK
+                    </Button>
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      style={styles.actions.button}
+                      onClick={this.handleFieldCancel}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                ) : null
+              }
+              <TextField
+                fullWidth
+                label="twitter"
+                value={this.state.twitter}
+                onChange={this.handleField('twitter')}
+              />
+              {this.state.edited === 'twitter'
+                ? (
+                  <div style={styles.actions}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      style={styles.actions.button}
+                      onClick={this.handleSubmit('twitter')}
+                    >
+                      OK
+                    </Button>
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      style={styles.actions.button}
+                      onClick={this.handleFieldCancel}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                ) : null
+              }
+              <TextField
+                fullWidth
+                multiline
+                label="biography"
+                value={this.state.biography}
+                onChange={this.handleField('biography')}
+              />
+              {this.state.edited === 'biography'
+                ? (
+                  <div style={styles.actions}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      style={styles.actions.button}
+                      onClick={this.handleSubmit('biography')}
+                    >
+                      OK
+                    </Button>
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      style={styles.actions.button}
+                      onClick={this.handleFieldCancel}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                ) : null
+              }
             </div>
-          </div>
-          <div style={styles.actions}>
-            <Button
-              variant="contained"
-              color="primary"
-              style={styles.actions.button}
-              disabled={!this.state.edited}
-            >
-              OK
-            </Button>
-            <Button
-              color="secondary"
-              variant="contained"
-              style={styles.actions.button}
-              disabled={!this.state.edited}
-              onClick={this.handleFieldCancel}
-            >
-              Cancel
-            </Button>
           </div>
         </div>
       </Template>
