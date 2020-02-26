@@ -76,6 +76,25 @@ class Me extends React.Component {
                 onChange={this.handleField('email')}
               />
               <TextField label="first name" fullWidth />
+              <div style={styles.actions}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  style={styles.actions.button}
+                  disabled={!this.state.edited}
+                >
+                  OK
+                </Button>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  style={styles.actions.button}
+                  disabled={!this.state.edited}
+                  onClick={this.handleFieldCancel}
+                >
+                  Cancel
+                </Button>
+              </div>
               <TextField label="last name" fullWidth />
               <TextField label="biography" fullWidth multiline />
             </div>

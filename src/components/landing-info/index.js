@@ -20,7 +20,7 @@ class LandingInfo extends Component {
         <div style={styles.small}>
           <a
             style={styles.link}
-            href="http://kc-lab.org/"
+            href="https://kc-lab.org/"
             target="_blank"
             rel="noopener noreferrer"
           >
