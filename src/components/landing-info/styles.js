@@ -44,6 +44,8 @@ export default function getStyles(theme, height) {
 
     logo: {
       maxWidth: '100%',
+      width: 400,
+      height: 300,
     },
   }
   return styles
