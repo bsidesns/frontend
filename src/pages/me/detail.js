@@ -3,6 +3,7 @@ import { withStore } from 'freenit'
 
 // Components
 import {
+  Avatar,
   Button,
   Paper,
   TextField,
@@ -54,37 +55,27 @@ class Me extends React.Component {
   }
 
   render() {
-    const me = this.props.store.me.detail
+    // const me = this.props.store.me.detail
     return (
       <Template style={{}}>
         <Paper style={styles.root}>
-          <form onSubmit={this.handleSubmit} style={styles.form}>
-            <TextField
-              required
-              label="Email"
-              type="email"
-              variant="outlined"
-              value={this.state.email}
-              onChange={this.handleEmail}
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              style={styles.button}
-              disabled={me.email === this.state.email}
-            >
-              Save
+          <div style={styles.content}>
+            <Avatar style={styles.avatar} />
+            <div style={styles.inputs}>
+              <TextField fullWidth="true" label="email" />
+              <TextField label="first name" fullWidth="true" />
+              <TextField fullWidth="true" label="last name" />
+              <TextField label="biography" fullWidth="true" multiline="true" />
+            </div>
+          </div>
+          <div style={styles.actions}>
+            <Button variant="contained" color="primary" style={styles.actions.button}>
+              OK
             </Button>
-            <Button
-              variant="contained"
-              style={styles.button}
-              disabled={me.email === this.state.email}
-              onClick={this.handleEmailCancel}
-            >
+            <Button color="secondary" variant="contained" style={styles.actions.button}>
               Cancel
             </Button>
-          </form>
+          </div>
         </Paper>
       </Template>
     )
