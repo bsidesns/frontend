@@ -5,7 +5,6 @@ import { withStore } from 'freenit'
 import {
   Avatar,
   Button,
-  Paper,
   TextField,
 } from '@material-ui/core'
 
@@ -16,12 +15,19 @@ import styles from './styles'
 
 class Me extends React.Component {
   state = {
+    edited: false,
     email: '',
   }
 
   constructor(props) {
     super(props)
     this.fetch()
+  }
+
+  initState = (data = this.props.store.me.detail) => {
+    this.setState({
+      email: data.email,
+    })
   }
 
   fetch = async () => {
@@ -31,18 +37,20 @@ class Me extends React.Component {
       const error = errors(response)
       store.notification.show(error.message)
     } else {
-      this.setState({
-        email: response.email,
-      })
+      this.initState(response)
     }
   }
 
-  handleEmail = (event) => {
-    this.setState({ email: event.target.value })
+  handleField = (field) => (event) => {
+    this.setState({
+      edited: field,
+      [field]: event.target.value,
+    })
   }
 
-  handleEmailCancel = () => {
-    this.setState({ email: this.props.store.me.detail.email })
+  handleFieldCancel = () => {
+    this.setState({ edited: false })
+    this.initState()
   }
 
   handleSubmit = async (event) => {
@@ -55,28 +63,43 @@ class Me extends React.Component {
   }
 
   render() {
-    // const me = this.props.store.me.detail
     return (
       <Template style={{}}>
-        <Paper style={styles.root}>
+        <div style={styles.root}>
           <div style={styles.content}>
             <Avatar style={styles.avatar} />
             <div style={styles.inputs}>
-              <TextField fullWidth="true" label="email" />
-              <TextField label="first name" fullWidth="true" />
-              <TextField fullWidth="true" label="last name" />
-              <TextField label="biography" fullWidth="true" multiline="true" />
+              <TextField
+                fullWidth
+                label="email"
+                value={this.state.email}
+                onChange={this.handleField('email')}
+              />
+              <TextField label="first name" fullWidth />
+              <TextField label="last name" fullWidth />
+              <TextField label="biography" fullWidth multiline />
             </div>
           </div>
           <div style={styles.actions}>
-            <Button variant="contained" color="primary" style={styles.actions.button}>
+            <Button
+              variant="contained"
+              color="primary"
+              style={styles.actions.button}
+              disabled={!this.state.edited}
+            >
               OK
             </Button>
-            <Button color="secondary" variant="contained" style={styles.actions.button}>
+            <Button
+              color="secondary"
+              variant="contained"
+              style={styles.actions.button}
+              disabled={!this.state.edited}
+              onClick={this.handleFieldCancel}
+            >
               Cancel
             </Button>
           </div>
-        </Paper>
+        </div>
       </Template>
     )
   }

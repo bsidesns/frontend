@@ -10,6 +10,7 @@ export default {
     display: 'block',
     minHeight: 'calc(100vh - 65px - 40px)',
     padding: 20,
+    backgroundColor: 'white',
   },
 
   item: {
