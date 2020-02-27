@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
 
   render() {
     let AdminButton
-    if (this.props.store.me.detail.admin) {
+    if (this.props.store.profile.detail.admin) {
       AdminButton = this.state.admin
         ? (
           <Button

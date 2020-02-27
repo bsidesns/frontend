@@ -5,12 +5,12 @@ import TestApp from 'TestApp'
 import service, { config } from '../mock'
 
 
-it('me', async () => {
+it('profile', async () => {
   let wrapper
   config.fetch = true
   await act(async () => {
     wrapper = await mount(
-      <TestApp path="/me" />
+      <TestApp path="/profile" />
     )
   })
   expect(service.fetch).toHaveBeenCalled()
@@ -23,7 +23,7 @@ it('me failed', async () => {
   config.fetch = false
   await act(async () => {
     await mount(
-      <TestApp path="/me" />
+      <TestApp path="/profile" />
     )
   })
   expect(service.fetch).toHaveBeenCalled()
