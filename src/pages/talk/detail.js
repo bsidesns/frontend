@@ -61,9 +61,9 @@ class TalkDetail extends React.Component {
   }
 
   render() {
-    const { me, talk } = this.props.store
+    const { profile, talk } = this.props.store
     const styles = getStyles({ data: [] })
-    const enableEdit = talk.detail.user.id === me.detail.id || me.detail.admin
+    const enableEdit = talk.detail.user.id === profile.detail.id || profile.detail.admin
     const user = talk.detail.user.id
       ? (
         <div>
@@ -73,7 +73,7 @@ class TalkDetail extends React.Component {
             {talk.detail.user.lastName}
           </h3>
           {
-            me.detail.admin
+            profile.detail.admin
               ? <h4>{talk.detail.user.email}</h4>
               : null
           }
@@ -216,7 +216,7 @@ class TalkDetail extends React.Component {
           allowFullScreen
         />
       )
-      video = me.detail.admin
+      video = profile.detail.admin
         ? (
           <div>
             <div>
@@ -231,7 +231,7 @@ class TalkDetail extends React.Component {
             {embed}
           </div>
         )
-    } else if (me.detail.admin) {
+    } else if (profile.detail.admin) {
       video = (
         <Button variant="outlined" onClick={this.handleEdit('video')}>
           Add Video

@@ -13,7 +13,7 @@ import Dashboard from 'pages/dashboard'
 import Event from 'pages/event'
 import Gallery from 'pages/gallery'
 import Landing from 'pages/landing'
-import Me from 'pages/me'
+import Profile from 'pages/profile'
 import Role from 'pages/role'
 import Talk from 'pages/talk'
 import User from 'pages/user'
@@ -33,7 +33,7 @@ const Routing = () => {
       <Route exact path="/event/:year" component={Event.detail} />
       <Route exact path="/events" component={Event.list} />
       <Route exact path="/login" component={Auth.login} />
-      <Route exact path="/me" component={Me.detail} />
+      <Route exact path="/profile" component={Profile.detail} />
       <Route exact path="/register" component={Auth.register} />
       <Route exact path="/reset" component={Auth.reset} />
       <Route exact path="/reset/:token" component={Auth.changePassword} />

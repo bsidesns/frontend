@@ -25,7 +25,7 @@ import EventIcon from '@material-ui/icons/EventNote'
 import GalleryIcon from '@material-ui/icons/Apps'
 import LoginIcon from '@material-ui/icons/Input'
 import LogoutIcon from '@material-ui/icons/PowerSettingsNew'
-import MeIcon from '@material-ui/icons/AccountCircle'
+import ProfileIcon from '@material-ui/icons/AccountCircle'
 import MenuIcon from '@material-ui/icons/Menu'
 import RoleIcon from '@material-ui/icons/People'
 import ScheduleIcon from '@material-ui/icons/CalendarToday'
@@ -138,12 +138,12 @@ class Template extends React.Component {
           </Link>
         ),
         (
-          <Link to="/me" key="me">
+          <Link to="/profile" key="profile">
             <MenuItem>
               <ListItemIcon>
-                <MeIcon />
+                <ProfileIcon />
               </ListItemIcon>
-              Me
+              Profile
             </MenuItem>
           </Link>
         ),

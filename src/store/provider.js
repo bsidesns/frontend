@@ -14,7 +14,7 @@ import CfS from 'pages/cfs'
 import Event from 'pages/event'
 import Gallery from 'pages/gallery'
 import Landing from 'pages/landing'
-import Me from 'pages/me'
+import Profile from 'pages/profile'
 import Talk from 'pages/talk'
 import { withRouter } from 'react-router-dom'
 
@@ -40,9 +40,7 @@ const StoreProvider = (props) => {
     ),
     history: props.history,
     landing: new Landing.store(useState(Landing.initial.detail)),
-    me: new Me.store(
-      useState(Me.initial.detail),
-    ),
+    profile: new Profile.store(useState(Profile.initial.detail)),
     notification: new EmptyTemplate.store(
       useState(EmptyTemplate.initial.detail),
     ),

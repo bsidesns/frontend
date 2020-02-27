@@ -7,14 +7,18 @@ import {
   Button,
   TextField,
 } from '@material-ui/core'
+import {
+  GalleryUpload,
+} from 'components'
 
-import { errors } from 'utils'
+import { API_ROOT, errors } from 'utils'
 import Template from 'templates/default/detail'
 import styles from './styles'
 
 
-class Me extends React.Component {
+class Profile extends React.Component {
   state = {
+    avatar: '',
     biogaphy: '',
     edited: false,
     email: '',
@@ -22,6 +26,7 @@ class Me extends React.Component {
     firstName: '',
     lastName: '',
     twitter: '',
+    open: false,
   }
 
   constructor(props) {
@@ -29,8 +34,9 @@ class Me extends React.Component {
     this.fetch()
   }
 
-  initState = (data = this.props.store.me.detail) => {
+  initState = (data = this.props.store.profile.detail) => {
     this.setState({
+      avatar: data.avatar || '',
       biography: data.biography || '',
       email: data.email || '',
       facebook: data.facebook || '',
@@ -42,7 +48,7 @@ class Me extends React.Component {
 
   fetch = async () => {
     const { store } = this.props
-    const response = await store.me.fetch()
+    const response = await store.profile.fetch()
     if (!response.ok) {
       const error = errors(response)
       store.notification.show(error.message)
@@ -63,15 +69,28 @@ class Me extends React.Component {
     this.initState()
   }
 
-  handleSubmit = (field) => async (event) => {
-    const { me, notification } = this.props.store
-    event.preventDefault()
-    const response = await me.edit({ [field]: this.state[field] })
+  handleSubmit = (field) => async () => {
+    const { profile, notification } = this.props.store
+    const response = await profile.edit({ [field]: this.state[field] })
     if (!response.ok) {
-      notification.show('Error editing me')
+      notification.show('Error editing profile')
     } else {
       this.setState({ edited: false })
     }
+  }
+
+  avatarUpload = () => {
+    this.setState({ open: true })
+  }
+
+  avatarUploadCancel = () => {
+    this.setState({ open: false })
+  }
+
+  avatarUploadSuccess = async (files) => {
+    const [avatar] = files
+    this.setState({ avatar: `/media/avatars/${avatar.name}` })
+    await this.handleSubmit('avatar')()
   }
 
   render() {
@@ -79,7 +98,17 @@ class Me extends React.Component {
       <Template style={{}}>
         <div style={styles.root}>
           <div style={styles.content}>
-            <Avatar style={styles.avatar} />
+            <GalleryUpload
+              open={this.state.open}
+              target={`${API_ROOT}/gallery/album/avatars`}
+              onClose={this.avatarUploadCancel}
+              onSuccess={this.avatarUploadSuccess}
+            />
+            <Avatar
+              style={styles.avatar}
+              onClick={this.avatarUpload}
+              src={this.state.avatar}
+            />
             <div style={styles.inputs}>
               <TextField
                 fullWidth
@@ -259,4 +288,4 @@ class Me extends React.Component {
 }
 
 
-export default withStore(Me)
+export default withStore(Profile)
