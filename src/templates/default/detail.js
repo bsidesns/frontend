@@ -70,7 +70,7 @@ class Template extends React.Component {
   }
 
   render() {
-    const { auth, event, resolution } = this.props.store
+    const { auth, event, profile, resolution } = this.props.store
     const AnonButton = (
       <Link to="/login" style={styles.login}>
         <IconButton color="inherit">
@@ -84,8 +84,19 @@ class Template extends React.Component {
       </IconButton>
     )
     const AuthButton = auth.detail.ok ? LoggedinButton : AnonButton
-    const AdminMenu = auth.detail.admin
+    console.log(profile.detail.admin)
+    const AdminMenu = profile.detail.admin
       ? [
+        (
+          <Link to="/dashboard" key="dashboard">
+            <MenuItem>
+              <ListItemIcon>
+                <DashboardIcon />
+              </ListItemIcon>
+              Dashboard
+            </MenuItem>
+          </Link>
+        ),
         (
           <Link to="/users" key="users">
             <MenuItem>
@@ -127,16 +138,6 @@ class Template extends React.Component {
       )
     const AuthMenu = auth.detail.ok
       ? [
-        (
-          <Link to="/dashboard" key="dashboard">
-            <MenuItem>
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              Dashboard
-            </MenuItem>
-          </Link>
-        ),
         (
           <Link to="/profile" key="profile">
             <MenuItem>

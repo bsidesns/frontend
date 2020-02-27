@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { withStore } from 'store'
 
 // Components
 import {
@@ -9,7 +8,7 @@ import {
   TextField,
 } from '@material-ui/core'
 
-import Template from 'templates/empty/detail'
+import { withStore, EmptyTemplate } from 'freenit'
 import styles from './styles'
 
 
@@ -66,7 +65,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <Template style={{}}>
+      <EmptyTemplate.detail style={{}}>
         <div style={styles.root}>
           <Paper style={styles.paper}>
             <div>
@@ -115,7 +114,7 @@ class Register extends React.Component {
             </div>
           </Paper>
         </div>
-      </Template>
+      </EmptyTemplate.detail>
     )
   }
 }

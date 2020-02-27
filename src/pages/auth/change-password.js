@@ -9,9 +9,11 @@ import {
   TextField,
 } from '@material-ui/core'
 
-import Template from 'templates/empty/detail'
 import styles from './styles'
-import { withStore } from 'store'
+import {
+  withStore,
+  EmptyTemplate,
+} from 'freenit'
 
 
 class ChangePassword extends React.Component {
@@ -41,7 +43,7 @@ class ChangePassword extends React.Component {
 
   render() {
     return (
-      <Template style={{}}>
+      <EmptyTemplate.detail style={{}}>
         <div style={styles.root}>
           <Paper style={styles.paper}>
             <div>
@@ -67,7 +69,7 @@ class ChangePassword extends React.Component {
             </div>
           </Paper>
         </div>
-      </Template>
+      </EmptyTemplate.detail>
     )
   }
 }
