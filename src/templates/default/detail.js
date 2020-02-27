@@ -84,7 +84,6 @@ class Template extends React.Component {
       </IconButton>
     )
     const AuthButton = auth.detail.ok ? LoggedinButton : AnonButton
-    console.log(profile.detail.admin)
     const AdminMenu = profile.detail.admin
       ? [
         (

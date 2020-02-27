@@ -1,5 +1,4 @@
 import React from 'react'
-import { withStore } from 'freenit'
 import Template from 'templates/default/detail'
 
 // Components
@@ -11,15 +10,7 @@ import AdminDashboard from './admin'
 import styles from './styles'
 
 
-class Dashboard extends React.Component {
-  state = {
-    admin: false,
-  }
-
-  handleDashboard = (admin) => () => {
-    this.setState({ admin })
-  }
-
+export default class Dashboard extends React.Component {
   render() {
     return (
       <Template secure style={{}}>
@@ -30,6 +21,3 @@ class Dashboard extends React.Component {
     )
   }
 }
-
-
-export default withStore(Dashboard)
