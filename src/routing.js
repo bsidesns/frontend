@@ -3,9 +3,9 @@ import { Switch, Route } from 'react-router-dom'
 
 // Pages
 import {
-  Auth,
   NoPage,
 } from 'freenit'
+import Auth from 'pages/auth'
 import CfP from 'pages/cfp'
 import CfS from 'pages/cfs'
 import CoC from 'pages/coc'
