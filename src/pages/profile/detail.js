@@ -91,6 +91,7 @@ class Profile extends React.Component {
     const [avatar] = files
     this.setState({ avatar: `/media/avatars/${avatar.name}` })
     await this.handleSubmit('avatar')()
+    this.setState({ avatar: avatar.src })
   }
 
   render() {
