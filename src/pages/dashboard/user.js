@@ -1,6 +1,5 @@
 import React from 'react'
-import { withStore } from 'freenit'
-import { errors } from 'utils'
+import { errors, withStore } from 'freenit'
 
 // Components
 import {

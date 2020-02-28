@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withTheme } from '@material-ui/core/styles'
 import { withRouter } from 'react-router-dom'
-import { withStore } from 'freenit'
 import moment from 'moment'
-import { errors } from 'utils'
+import {
+  errors,
+  withStore,
+} from 'freenit'
 
 // Components
 import {

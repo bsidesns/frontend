@@ -1,14 +1,11 @@
-import { rest } from 'utils'
-
-
 export default {
   fetch: async (id) => {
-    const response = await rest.get(`/talk/${id}`)
+    const response = await window.rest.get(`/talk/${id}`)
     return response.data
   },
 
   fetchAll: async (year, page) => {
-    const response = await rest.get(
+    const response = await window.rest.get(
       `/talk/year/${year}`,
       { headers: { 'X-Page': page } },
     )
@@ -16,12 +13,12 @@ export default {
   },
 
   patch: async (id, data) => {
-    const response = await rest.patch(`/talk/${id}`, data)
+    const response = await window.rest.patch(`/talk/${id}`, data)
     return response.data
   },
 
   send: async (data) => {
-    const response = await rest.post('/cfp', data)
+    const response = await window.rest.post('/cfp', data)
     return response.data
   },
 }

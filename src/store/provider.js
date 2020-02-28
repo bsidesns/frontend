@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 
 // Pages
 import {
-  Auth,
   EmptyTemplate,
   Store,
   Resolution,
   Role,
-  User
+  User,
 } from 'freenit'
+import Auth from 'pages/auth'
 import CfP from 'pages/cfp'
 import CfS from 'pages/cfs'
 import Event from 'pages/event'

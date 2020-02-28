@@ -1,15 +1,12 @@
-import changePassword from './change-password'
 import login from './login'
-import register from './register'
-import reset from './reset'
 import { Auth } from 'freenit'
 
 
 export default {
-  changePassword,
+  changePassword: Auth.changePassword,
   initial: Auth.initial,
   login,
-  register,
-  reset,
+  register: Auth.register,
+  reset: Auth.reset,
   store: Auth.store,
 }
