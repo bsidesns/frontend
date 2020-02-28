@@ -8,8 +8,11 @@ import {
   DialogTitle,
   CircularProgress,
 } from '@material-ui/core'
-import { getCookie } from 'utils'
-import { withStore } from 'freenit'
+import {
+  getCookie,
+  withStore,
+} from 'freenit'
+
 import styles from './styles'
 
 

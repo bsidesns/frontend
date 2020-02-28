@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { errors } from 'utils'
+import {
+  errors,
+  withStore,
+} from 'freenit'
 
 // Components
 import {
@@ -11,7 +14,6 @@ import {
 } from '@material-ui/core'
 
 import Template from 'templates/default/detail'
-import { withStore } from 'freenit'
 import getStyles from './styles'
 
 

@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 // Pages
 import {
   NoPage,
+  rest,
 } from 'freenit'
 import Auth from 'pages/auth'
 import CfP from 'pages/cfp'
@@ -18,6 +19,11 @@ import Role from 'pages/role'
 import Talk from 'pages/talk'
 import User from 'pages/user'
 import Volunteering from 'pages/volunteering'
+
+
+const API_ROOT = '/api/v0'
+window.rest = rest(API_ROOT)
+window.rest.API_ROOT = API_ROOT
 
 
 const Routing = () => {

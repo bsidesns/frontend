@@ -1,5 +1,8 @@
 import React from 'react'
-import { withStore } from 'freenit'
+import {
+  errors,
+  withStore,
+} from 'freenit'
 
 // Components
 import {
@@ -11,7 +14,6 @@ import {
   GalleryUpload,
 } from 'components'
 
-import { API_ROOT, errors } from 'utils'
 import Template from 'templates/default/detail'
 import styles from './styles'
 
@@ -89,9 +91,14 @@ class Profile extends React.Component {
 
   avatarUploadSuccess = async (files) => {
     const [avatar] = files
-    this.setState({ avatar: `/media/avatars/${avatar.name}` })
-    await this.handleSubmit('avatar')()
-    this.setState({ avatar: avatar.src })
+    const { profile, notification } = this.props.store
+    const response = await profile.edit({ avatar: `/media/avatars/${avatar.name}` })
+    if (!response.ok) {
+      const error = errors(response)
+      notification.show(error.message)
+    } else {
+      this.setState({ avatar: avatar.src })
+    }
   }
 
   render() {
@@ -101,7 +108,7 @@ class Profile extends React.Component {
           <div style={styles.content}>
             <GalleryUpload
               open={this.state.open}
-              target={`${API_ROOT}/gallery/album/avatars`}
+              target={`${window.rest.API_ROOT}/gallery/album/avatars`}
               onClose={this.avatarUploadCancel}
               onSuccess={this.avatarUploadSuccess}
             />
@@ -116,6 +123,7 @@ class Profile extends React.Component {
                 label="email"
                 value={this.state.email}
                 onChange={this.handleField('email')}
+                type="email"
               />
               {this.state.edited === 'email'
                 ? (

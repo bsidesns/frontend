@@ -21,7 +21,6 @@ import InfiniteScroll from 'react-infinite-scroller'
 import AddIcon from '@material-ui/icons/Add'
 
 import Template from 'templates/default/detail'
-import { API_ROOT } from 'utils'
 import styles from './styles'
 
 
@@ -195,7 +194,7 @@ class Gallery extends React.Component {
             />
             <GalleryUpload
               open={this.state.open}
-              target={`${API_ROOT}/gallery/album/main/${year}`}
+              target={`${window.API_ROOT}/gallery/album/main/${year}`}
               onClose={this.handleCloseUpload}
             />
           </InfiniteScroll>

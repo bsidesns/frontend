@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link }from 'react-router-dom'
-import { withStore } from 'freenit'
-import { errors } from 'utils'
+import { Link } from 'react-router-dom'
+import {
+  errors,
+  withStore,
+} from 'freenit'
 
 // Components
 import {
