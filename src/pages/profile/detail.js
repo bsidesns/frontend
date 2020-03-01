@@ -49,8 +49,10 @@ class Profile extends React.Component {
   }
 
   fetch = async () => {
-    const { store } = this.props
-    const response = await store.profile.fetch()
+    const { match, store } = this.props
+    const response = match.params.id === undefined
+      ? await store.profile.fetch()
+      : await store.user.fetch(match.params.id)
     if (!response.ok) {
       const error = errors(response)
       store.notification.show(error.message)
@@ -72,8 +74,11 @@ class Profile extends React.Component {
   }
 
   handleSubmit = (field) => async () => {
-    const { profile, notification } = this.props.store
-    const response = await profile.edit({ [field]: this.state[field] })
+    const { store, match } = this.props
+    const { profile, notification, user } = store
+    const response = match.params.id === undefined
+      ? await profile.edit({ [field]: this.state[field] })
+      : await user.edit(match.params.id, { [field]: this.state[field] })
     if (!response.ok) {
       notification.show('Error editing profile')
     } else {
@@ -91,8 +96,14 @@ class Profile extends React.Component {
 
   avatarUploadSuccess = async (files) => {
     const [avatar] = files
-    const { profile, notification } = this.props.store
-    const response = await profile.edit({ avatar: `/media/avatars/${avatar.name}` })
+    const { match, store } = this.props
+    const { profile, notification, user } = store
+    const response = match.params.id === undefined
+      ? await profile.edit({ avatar: `/media/avatars/${avatar.name}` })
+      : await user.edit(
+        match.params.id,
+        { avatar: `/media/avatars/${avatar.name}` },
+      )
     if (!response.ok) {
       const error = errors(response)
       notification.show(error.message)
