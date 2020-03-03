@@ -35,6 +35,7 @@ const Routing = () => {
       <Route exact path="/cfp/list" component={CfP.list} />
       <Route exact path="/cfs" component={CfS.detail} />
       <Route exact path="/coc" component={CoC.detail} />
+      <Route exact path="/confirm/:token" component={Auth.confirm} />
       <Route exact path="/dashboard" component={Dashboard.detail} />
       <Route exact path="/event/:year" component={Event.detail} />
       <Route exact path="/events" component={Event.list} />

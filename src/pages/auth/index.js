@@ -3,10 +3,6 @@ import { Auth } from 'freenit'
 
 
 export default {
-  changePassword: Auth.changePassword,
-  initial: Auth.initial,
+  ...Auth,
   login,
-  register: Auth.register,
-  reset: Auth.reset,
-  store: Auth.store,
 }
