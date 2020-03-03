@@ -64,9 +64,7 @@ class Gallery extends React.Component {
       return
     }
     this.setState(prevState => {
-      return {
-        currentPhoto: prevState.currentPhoto + 1,
-      }
+      return { currentPhoto: prevState.currentPhoto + 1 }
     })
   }
 
@@ -136,7 +134,7 @@ class Gallery extends React.Component {
   }
 
   render() {
-    const { gallery, me } = this.props.store
+    const { gallery, profile } = this.props.store
     const { prefix, name, files } = gallery.detail
     const { year } = this.props.match.params
     const photos = files.data.map(picture => ({
@@ -146,7 +144,7 @@ class Gallery extends React.Component {
       height: styles.picture.height,
       width: styles.picture.width,
     }))
-    const uploadButton = me.detail.admin
+    const uploadButton = profile.detail.admin
       ? (
         <Fab
           color="primary"
