@@ -10,4 +10,8 @@ export default {
   login: {
     color: 'white',
   },
+  
+  appbar: {
+    backgroundColor: '#24423C',
+  },
 }

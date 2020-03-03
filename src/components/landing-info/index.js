@@ -29,7 +29,7 @@ class LandingInfo extends Component {
         </div>
         <Link to="/cfp" style={styles.tickets.link}>
           <Paper style={styles.tickets}>
-            Call for Papers
+            CALL FOR PAPERS
           </Paper>
         </Link>
       </div>

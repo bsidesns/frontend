@@ -13,40 +13,37 @@ class LandingAbout extends React.Component {
     const styles = getStyles(this.props.theme, resolution.detail)
     return (
       <Paper style={styles.root}>
-        <div style={styles.title}>Conference</div>
+        <div style={styles.title}>Security BSides Conference</div>
         <div style={styles.title.small}>
           <p style={styles.title.center}>
             Welcome to BSides Novi Sad 2020!
           </p>
           <br />
           <p>
-            BSidesNS will be held in Novi Sad, Serbia on 9st of May. The
-            conference aims to bring together leading local security experts,
-            enthusiasts and business professionals to exchange and share their
+            BSidesNS will be held in Novi Sad, Serbia on 9th of May. The
+            conference aims to bring together leading security experts,
+            enthusiasts and activists to exchange and share their
             experiences and research results.
           </p>
           <br />
-          <p>
-            BSidesNS is a one day, community-driven conference full of
-            talks, tutorials, and other activities that strives to
-            strengthen the local security community.All talks at the conference
-            will be in English, recorded and uploaded on our YouTube channel so
-            we can also promote our local community globally. Security
-            researchers, practitioners and educators will have a chance to
-            present and discuss the most recent innovations, trends, and
-            concerns as well as practical challenges and solutions that are
-            shaping the future of software and hardware security.
-          </p>
+            Security BSides is a community-driven framework for building 
+            events by and for information security community members. 
+            These events are already happening in major cities all over the world! 
+            BSides Novi Sad is a free conference where researchers, 
+            practitioners and activists will have a chance to freely
+            present and discuss their most recent research, concerns and trends
+            as well as challenges and solutions that are
+            shaping the future of web, software, hardware and personal security.
           <br />
           <p>
             Our conference will also provide engaging content to
             visitors of all skill levels, from professionals to curious
-            amateurs.
+            amateurs. All presentations will be in English.
           </p>
           <br />
           <p style={styles.title.center}>
             We encourage people who have not had the chance to experience
-            BSidesNS to attend our conference in 2020.
+            BSides to attend our BSidesNS conference in 2020.
           </p>
         </div>
       </Paper>
