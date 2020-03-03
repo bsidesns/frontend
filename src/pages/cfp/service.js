@@ -1,19 +1,19 @@
 export default {
   fetch: async (id) => {
-    const response = await window.rest.get(`/talk/${id}`)
+    const response = await window.rest.get(`/talks/${id}`)
     return response.data
   },
 
   fetchAll: async (year, page) => {
     const response = await window.rest.get(
-      `/talk/year/${year}`,
+      `/talks/year/${year}`,
       { headers: { 'X-Page': page } },
     )
     return response.data
   },
 
   patch: async (id, data) => {
-    const response = await window.rest.patch(`/talk/${id}`, data)
+    const response = await window.rest.patch(`/talks/${id}`, data)
     return response.data
   },
 
