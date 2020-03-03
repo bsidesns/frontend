@@ -31,9 +31,9 @@ export default function getStyles(theme, height) {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: '#5c0404',
       color: 'white',
-      fontSize: 36,
+      fontSize: 25,
       textAlign: 'center',
       link: {
         marginTop: 50,

@@ -1,7 +1,7 @@
 export default function getStyles(theme, resolution) {
   const fontSize = resolution.width > 600
-    ? 80
-    : 48
+    ? 60
+    : 38
   const styles = {
     ...theme,
 
@@ -15,11 +15,11 @@ export default function getStyles(theme, resolution) {
 
     title: {
       fontSize,
-      color: theme.palette.primary.main,
+      color: '#24423C',
       marginBottom: 50,
       textAlign: 'center',
       small: {
-        fontSize: '25px',
+        fontSize: '22px',
         marginTop: 10,
         color: '#888',
         textAlign: 'justify',
