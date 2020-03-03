@@ -52,7 +52,7 @@ class CfP extends React.Component {
     this.setState({ submitting: false })
     if (response.ok) {
       if (this.props.store.auth.detail.ok) {
-        this.props.history.push(`/cfp/${response.talk.id}`)
+        this.props.history.push(`/talk/${response.talk.id}`)
       } else {
         this.props.store.notification.show('Your talk was submitted')
       }

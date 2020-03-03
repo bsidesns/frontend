@@ -5,7 +5,6 @@ import {
   withStore,
 } from 'freenit'
 
-// Components
 import {
   Button,
   Paper,
@@ -13,7 +12,10 @@ import {
   Tooltip,
 } from '@material-ui/core'
 
+import ReactMarkdown from 'react-markdown'
+
 import Template from 'templates/default/detail'
+import { linkTarget } from 'utils'
 import getStyles from './styles'
 
 
@@ -54,12 +56,20 @@ class TalkDetail extends React.Component {
     this.setState({ edit: null })
   }
 
-  handleSubmit = (field) => () => {
-    this.props.store.talk.edit(
+  handleSubmit = (field) => async () => {
+    const { match, store } = this.props
+    const { notification, talk } = store
+    const response = await talk.edit(
       this.props.match.params.id,
       { [field]: this.state[field] },
     )
     this.setState({ edit: null })
+    if (!response.ok) {
+      const error = errors(response)
+      notification.show(error.message)
+    } else {
+      talk.fetch(match.params.id)
+    }
   }
 
   render() {
@@ -139,9 +149,8 @@ class TalkDetail extends React.Component {
         </h1>
       )
     }
-    let description;
-    if (enableEdit) {
-      if (this.state.edit === 'description') {
+    let description
+    if (enableEdit && this.state.edit === 'description') {
         description = (
           <div>
             <div>
@@ -162,19 +171,6 @@ class TalkDetail extends React.Component {
             </Button>
           </div>
         )
-      } else {
-        description = (
-          <Tooltip title="Click to edit" placement="right">
-            <div
-              style={styles.description}
-              onClick={this.handleEdit('description')}
-              role="presentation"
-            >
-              {talk.detail.description}
-            </div>
-          </Tooltip>
-        )
-      }
     } else {
       description = (
         <div
@@ -182,7 +178,10 @@ class TalkDetail extends React.Component {
           onClick={this.handleEdit('description')}
           role="presentation"
         >
-          {talk.detail.description}
+          <ReactMarkdown
+            source={talk.detail.description}
+            linkTarget={linkTarget}
+          />
         </div>
       )
     }
