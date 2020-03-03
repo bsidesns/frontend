@@ -31,8 +31,8 @@ const Routing = () => {
     <Switch>
       <Route exact path="/" component={Landing.detail} />
       <Route exact path="/cfp" component={CfP.form} />
-      <Route exact path="/cfp/:id" component={CfP.detail} />
       <Route exact path="/cfp/list" component={CfP.list} />
+      <Route exact path="/cfp/:id" component={CfP.detail} />
       <Route exact path="/cfs" component={CfS.detail} />
       <Route exact path="/coc" component={CoC.detail} />
       <Route exact path="/confirm/:token" component={Auth.confirm} />
