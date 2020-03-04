@@ -219,7 +219,7 @@ class Template extends React.Component {
     return (
       <div>
         <AppBar position="static">
-          <Toolbar style={styles.appbar}>
+          <Toolbar>
             <Typography variant="h5" color="inherit" style={styles.flex}>
               <IconButton color="inherit" onClick={this.handleMenuOpen}>
                 <MenuIcon />
