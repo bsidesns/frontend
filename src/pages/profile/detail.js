@@ -96,20 +96,7 @@ class Profile extends React.Component {
 
   avatarUploadSuccess = async (files) => {
     const [avatar] = files
-    const { match, store } = this.props
-    const { profile, notification, user } = store
-    const response = match.params.id === undefined
-      ? await profile.edit({ avatar: `/media/avatars/${avatar.name}` })
-      : await user.edit(
-        match.params.id,
-        { avatar: `/media/avatars/${avatar.name}` },
-      )
-    if (!response.ok) {
-      const error = errors(response)
-      notification.show(error.message)
-    } else {
-      this.setState({ avatar: avatar.src })
-    }
+    this.setState({ avatar: avatar.src })
   }
 
   render() {
